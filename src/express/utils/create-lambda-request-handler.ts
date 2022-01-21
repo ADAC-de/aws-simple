@@ -41,6 +41,13 @@ export function createLambdaRequestHandler(
           environment,
           event: {
             ...getRequestHeaders(req),
+            requestContext: {
+              protocol: req.protocol,
+              httpMethod: req.method,
+              path: req.path,
+              stage: `$default`,
+              resourcePath: req.path,
+            },
             path: req.path,
             httpMethod: req.method,
             queryStringParameters,

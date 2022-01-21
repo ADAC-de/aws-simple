@@ -7,13 +7,13 @@ export function getRequestHeaders(
   const headers: Record<string, string> = {};
   const multiValueHeaders: Record<string, string[]> = {};
 
-  for (const [key, value] of Object.entries(req.headers)) {
-    if (Array.isArray(value)) {
-      multiValueHeaders[key] = value;
-    } else if (typeof value === `string`) {
-      headers[key] = value;
+  Object.entries(req.headers).forEach(([key, value]) => {
+    if (value) {
+      const multiValue = [value].flat();
+      multiValueHeaders[key] = multiValue;
+      headers[key] = multiValue[multiValue.length - 1] || ``;
     }
-  }
+  });
 
   return {headers, multiValueHeaders};
 }
