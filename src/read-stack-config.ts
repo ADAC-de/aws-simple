@@ -78,6 +78,7 @@ const StackConfigSchema = z.object({
   hostedZoneName: z.string().optional(),
   aliasRecordName: z.string().optional(),
   cachingEnabled: z.boolean().optional(),
+  certificateArn: z.string().optional(),
   terminationProtectionEnabled: z.boolean().optional(),
   authentication: z
     .object({
