@@ -78,6 +78,7 @@ const stackConfigStruct: Describe<
 > = object({
   hostedZoneName: optional(nonempty(string())),
   aliasRecordName: optional(nonempty(string())),
+  certificateArn: optional(nonempty(string())),
   cachingEnabled: optional(boolean()),
   terminationProtectionEnabled: optional(boolean()),
   authentication: optional(

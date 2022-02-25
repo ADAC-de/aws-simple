@@ -5,6 +5,7 @@ export interface StackConfig {
   readonly hostedZoneName?: string;
   readonly aliasRecordName?: string;
   readonly cachingEnabled?: boolean;
+  readonly certificateArn?: string;
   readonly terminationProtectionEnabled?: boolean;
   readonly authentication?: Authentication;
   readonly monitoring?: true | Monitoring;
