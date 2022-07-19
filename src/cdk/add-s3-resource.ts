@@ -2,6 +2,7 @@ import {join} from 'path';
 import type {aws_iam, aws_s3} from 'aws-cdk-lib';
 import {aws_apigateway} from 'aws-cdk-lib';
 import type {S3Route} from '../read-stack-config.js';
+import {addCorsPreflight} from './add-cors-preflight.js';
 
 export function addS3Resource(
   route: S3Route,
@@ -41,7 +42,7 @@ export function addS3Resource(
     );
 
     if (corsEnabled) {
-      resource.addCorsPreflight(corsOptions);
+      addCorsPreflight(resource, corsOptions);
     }
 
     resource.addMethod(`GET`, integration, methodOptions);
@@ -53,7 +54,7 @@ export function addS3Resource(
     );
 
     if (corsEnabled) {
-      proxyResource.addCorsPreflight(corsOptions);
+      addCorsPreflight(proxyResource, corsOptions);
     }
 
     proxyResource.addMethod(`GET`, integration, methodOptions);

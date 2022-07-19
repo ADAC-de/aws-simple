@@ -1,6 +1,7 @@
 import type {Stack, aws_lambda} from 'aws-cdk-lib';
 import {aws_apigateway} from 'aws-cdk-lib';
 import type {LambdaRoute, StackConfig} from '../read-stack-config.js';
+import {addCorsPreflight} from './add-cors-preflight.js';
 import {createLambdaFunction} from './create-lambda-function.js';
 
 export function addLambdaResource(
@@ -56,7 +57,7 @@ export function addLambdaResource(
   const resource = restApi.root.resourceForPath(publicPath.replace(`/*`, `/`));
 
   if (corsEnabled) {
-    resource.addCorsPreflight(corsOptions);
+    addCorsPreflight(resource, corsOptions);
   }
 
   resource.addMethod(httpMethod, integration, methodOptions);
@@ -67,7 +68,7 @@ export function addLambdaResource(
     );
 
     if (corsEnabled) {
-      proxyResource.addCorsPreflight(corsOptions);
+      addCorsPreflight(proxyResource, corsOptions);
     }
 
     proxyResource.addMethod(httpMethod, integration, methodOptions);
