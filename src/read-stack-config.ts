@@ -57,6 +57,7 @@ const LambdaRouteSchema = z.object({
   cacheTtlInSeconds: z.number().int().min(0).max(3600).optional(),
   authenticationEnabled: z.boolean().optional(),
   corsEnabled: z.boolean().optional(),
+  corsAllowHeaders: z.array(z.string()).optional(),
   onSynthesize: z.function().optional(),
 });
 
@@ -72,6 +73,7 @@ const S3RouteSchema = z.object({
   cacheTtlInSeconds: z.number().int().min(0).max(3600).optional(),
   authenticationEnabled: z.boolean().optional(),
   corsEnabled: z.boolean().optional(),
+  corsAllowHeaders: z.array(z.string()).optional(),
 });
 
 const StackConfigSchema = z.object({

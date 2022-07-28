@@ -11,7 +11,14 @@ export function addS3Resource(
   bucketReadRole: aws_iam.IRole,
   requestAuthorizer: aws_apigateway.IAuthorizer | undefined,
 ): void {
-  const {type, publicPath, path, authenticationEnabled, corsEnabled} = route;
+  const {
+    type,
+    publicPath,
+    path,
+    authenticationEnabled,
+    corsEnabled,
+    corsAllowHeaders,
+  } = route;
 
   if (authenticationEnabled && !requestAuthorizer) {
     throw new Error(
@@ -32,6 +39,10 @@ export function addS3Resource(
   const corsOptions: aws_apigateway.CorsOptions = {
     allowOrigins: aws_apigateway.Cors.ALL_ORIGINS,
     allowCredentials: authenticationEnabled,
+    ...(corsAllowHeaders && {
+      allowHeaders:
+        aws_apigateway.Cors.DEFAULT_HEADERS.concat(corsAllowHeaders),
+    }),
   };
 
   const methodOptions = getS3MethodOptions(route, requestAuthorizer);

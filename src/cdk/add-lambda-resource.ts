@@ -17,6 +17,7 @@ export function addLambdaResource(
     requestParameters,
     authenticationEnabled,
     corsEnabled,
+    corsAllowHeaders,
   } = route;
 
   if (authenticationEnabled && !requestAuthorizer) {
@@ -38,6 +39,10 @@ export function addLambdaResource(
   const corsOptions: aws_apigateway.CorsOptions = {
     allowOrigins: aws_apigateway.Cors.ALL_ORIGINS,
     allowCredentials: authenticationEnabled,
+    ...(corsAllowHeaders && {
+      allowHeaders:
+        aws_apigateway.Cors.DEFAULT_HEADERS.concat(corsAllowHeaders),
+    }),
   };
 
   const methodOptions: aws_apigateway.MethodOptions = {
