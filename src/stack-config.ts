@@ -76,6 +76,7 @@ export interface RouteOptions {
   readonly cacheTtlInSeconds?: number;
   readonly authenticationEnabled?: boolean;
   readonly corsEnabled?: boolean;
+  readonly corsAllowHeaders?: string[];
 }
 
 export interface Throttling {

@@ -52,6 +52,7 @@ const lambdaRouteStruct: Describe<
   cacheTtlInSeconds: optional(max(min(integer(), 0), 3600)),
   authenticationEnabled: optional(boolean()),
   corsEnabled: optional(boolean()),
+  corsAllowHeaders: optional(array(string())),
   onSynthesize: optional(func()),
 });
 
@@ -67,6 +68,7 @@ const s3RouteStruct: Describe<S3Route> = object({
   cacheTtlInSeconds: optional(max(min(integer(), 0), 3600)),
   authenticationEnabled: optional(boolean()),
   corsEnabled: optional(boolean()),
+  corsAllowHeaders: optional(array(string())),
 });
 
 const stackConfigStruct: Describe<
