@@ -2,6 +2,7 @@ import {dirname, isAbsolute, join, resolve} from 'path';
 import type {APIGatewayProxyResult} from 'aws-lambda';
 import type express from 'express';
 import {Lambda, LambdaMode} from 'runl';
+import type {LambdaOptions} from 'runl/types/types.js';
 import type {LambdaRoute} from '../read-stack-config.js';
 import {getQueryStringParameters} from './get-querystring-parameters.js';
 import {getRequestHeaders} from './get-request-headers.js';
@@ -77,6 +78,7 @@ export const registerLambdaRoute = (
       : join(projectRoot, route.path),
     lambdaTimeout: route.timeoutInSeconds,
     mode: LambdaMode.Persistent,
+    debugPort: route.debugPort,
   });
 
   getRouterMatcher(app, route.httpMethod)(
