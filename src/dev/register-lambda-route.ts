@@ -77,6 +77,7 @@ export const registerLambdaRoute = (
       : join(projectRoot, route.path),
     lambdaTimeout: route.timeoutInSeconds,
     mode: LambdaMode.Persistent,
+    debugPort: route.debugPort,
   });
 
   getRouterMatcher(app, route.httpMethod)(
