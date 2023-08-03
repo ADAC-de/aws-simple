@@ -6,6 +6,9 @@
     "type": "git",
     "url": "https://github.com/ADAC-de/aws-simple.git"
   },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
   "license": "MIT",
   "author": "Clemens Akens",
   "type": "module",
