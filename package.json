@@ -1,6 +1,6 @@
 {
   "name": "@adac-de/aws-simple",
-  "version": "18.5.0",
+  "version": "19.0.0",
   "description": "Production-ready AWS website deployment with minimal configuration.",
   "repository": {
     "type": "git",
