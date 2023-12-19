@@ -1,6 +1,6 @@
 {
   "name": "@adac-de/aws-simple",
-  "version": "19.0.0",
+  "version": "20.0.0",
   "description": "Production-ready AWS website deployment with minimal configuration.",
   "repository": {
     "type": "git",
@@ -72,6 +72,6 @@
     "typescript": "^5.1.3"
   },
   "peerDependencies": {
-    "aws-cdk-lib": "^2.38.0"
+    "aws-cdk-lib": "^2.109.0"
   }
 }
